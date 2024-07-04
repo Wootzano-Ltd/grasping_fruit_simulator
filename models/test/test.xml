@@ -1,0 +1,32 @@
+<mujoco>
+  <option timestep=".001" solver="CG"/> <!--solver="CG"-->
+  <!-- <size memory="10000M"/> -->
+  <extension>
+    <plugin plugin="mujoco.elasticity.solid"/>
+    <plugin plugin="mujoco.elasticity.membrane"/>
+  </extension>
+  <worldbody>
+		<light directional="true" diffuse=".4 .4 .4" specular="0.1 0.1 0.1" pos="0 0 5.0" dir="0 0 -1" castshadow="false"/>
+    <light directional="true" diffuse=".6 .6 .6" specular="0.2 0.2 0.2" pos="0 0 4" dir="0 0 -1"/>
+    <geom name="ground" type="plane" size="0 0 1" pos="0 0 0" quat="1 0 0 0" rgba=".5 .5 .5 1" condim="1"/>
+    <body name="test">
+      <!-- <freejoint/> -->
+      <flexcomp name="softbody" type="gmsh" file="meshes/sphere.stl_.msh" pos="0 0 2." rgba=".7 0 0 1" mass="1" scale="0.01 0.01 0.01" radius="0.0005">
+      <!-- <flexcomp name="softbody" type="gmsh" file="meshes/sphere.msh" pos="0 0 1."
+              radius=".01" dim="2" mass="1" scale="0.01 0.01 0.01"> -->
+        <contact selfcollide="none"/>
+        <edge equality="true" damping="0"/>
+        <!-- <contact condim="3" solref="0.01 1" solimp=".95 .99 .0001" selfcollide="none"/>
+        
+        <contact internal="false" selfcollide="none" solimp="1.95 1.99 .0001"/>
+        <edge equality="true"/> -->
+        <plugin plugin="mujoco.elasticity.solid">
+          <config key="poisson" value="0.3"/>
+          <config key="young" value="1e6"/>
+          <!-- <config key="thickness" value=".01"/> -->
+          <config key="damping" value="16"/>
+        </plugin>
+      </flexcomp>
+    </body>
+  </worldbody>
+</mujoco>

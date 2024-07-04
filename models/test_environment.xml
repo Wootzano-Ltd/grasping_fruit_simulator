@@ -1,0 +1,51 @@
+<mujoco>
+    <compiler angle="radian"/>
+    <option timestep="0.001" solver="CG"/>
+    <visual>
+        <rgba haze="0.15 0.25 0.35 1"/>
+        <headlight active="1"/>
+    </visual>
+    <asset>
+        <texture type="skybox" builtin="gradient" rgb1="0.3 0.5 0.7" rgb2="0 0 0" width="512" height="512"/>
+        <texture name="texplane" type="2d" builtin="checker" rgb1=".2 .3 .4" rgb2=".1 0.15 0.2"
+        width="512" height="512" mark="cross" markrgb=".8 .8 .8"/>
+        <material name="matplane" reflectance="0.3" texture="texplane" texrepeat="1 1" texuniform="true"/>
+    </asset>
+
+    <include file="grippers/demo_gripper/demo_gripper_settings.xml" />
+    <!-- <include file="fruit/vine_tomatoes/vine_tomatoes_settings.xml" /> -->
+
+    <worldbody>
+        <light directional="true" diffuse=".4 .4 .4" specular="0.1 0.1 0.1" pos="0 0 5.0" dir="0 0 -1" castshadow="false"/>
+        <light directional="true" diffuse=".6 .6 .6" specular="0.2 0.2 0.2" pos="0 0 4" dir="0 0 -1"/>
+
+        <geom name="ground" type="plane" size="0 0 1" pos="0 0 0" quat="1 0 0 0" material="matplane" condim="1"/>
+        <body name="table" pos="0 0 0.5">
+            <geom type="box" size=".3 .3 .5"/>
+            <body name="gripper_stand_1" pos="0 0.2 .605">
+                <geom type="box" size=".03 .03 .14"/>
+                <body name="gripper_stand_2" pos="0 -0.12 0.25">
+                    <joint name="stand_joint" type="slide" axis="0 0 1"/>
+                    <geom type="box" size=".03 .15 .03"/>
+                    <body name="gripper_mount" pos="0 -0.08 -0.03" euler="0 3.14 0">
+                        <include file="grippers/demo_gripper/demo_gripper_body.xml" />
+                    </body>
+                </body>
+            </body>
+        </body>
+        <body name="fruit_wrapper" pos="-0.004 0.025 1.0">
+            <!-- <freejoint/> -->
+            <include file="fruit/vine_tomatoes/vine_tomatoes.xml" />
+        </body>
+    </worldbody>
+
+    <actuator>
+        <position name="stand_position" joint="stand_joint" kp="30" ctrlrange="-0.9 0.9"/>
+        <velocity name="stand_velocity" joint="stand_joint" kv="30" />
+    </actuator>
+
+    <!-- <actuator>
+        <position name="fingertip_actuator" joint="edge_test_joint" />
+    </actuator> -->
+
+</mujoco>

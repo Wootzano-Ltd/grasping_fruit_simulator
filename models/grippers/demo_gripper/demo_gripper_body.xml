@@ -1,0 +1,48 @@
+<mujoco>
+    <body name="gripper_base_link">
+        <geom type="mesh" mesh="base_link" />
+        <inertial pos="0 0 0.06" mass=".83416" diaginertia="0.0013016 0.001498 0.00049972" />
+        <body name="gripper_finger1_knuckle_link" pos="-0.016 0 0.10586" euler="0 0 3.14">
+            <joint name="gripper_finger1_joint" type="hinge" axis="0 1 0"/>
+            <geom type="mesh" mesh="crank_Link" />
+            <inertial pos="0.015 0 -0.011" mass=".011111" fullinertia="3.88172e-06 1.92174e-06 4.32374e-06 -2.29456e-13 8.33e-07 2.04435e-13" />
+            <body name="gripper_finger1_finger_link" pos="0.0292080077784 0.0 -0.0227132622407">
+                <joint name="gripper_finger1_finger_joint" type="hinge" axis="0 1 0"/>
+                <geom type="mesh" mesh="rod_Link" />
+                <inertial pos="0.011 0 0.028" mass="0.0222871" fullinertia="8.72836e-06 7.26157e-06 3.3425e-06 7.0843e-15 -2.18833e-06 7.6579e-15" />
+            </body>
+        </body>
+        <body name="gripper_finger1_inner_knuckle_link" pos="-0.016 0 0.10586" euler="0 0 3.14">
+            <joint name="gripper_finger1_inner_knuckle_joint" type="hinge" axis="0 1 0" />
+            <geom type="mesh" mesh="proximal_phalanx_Link" />
+            <inertial pos="0.02 0 0.02" mass="0.0318004" fullinertia="1.39848e-05 1.04943e-05 1.36183e-05 -9.54763e-15 -5.01422e-06 8.94585e-16" />
+            <body name="gripper_finger1_finger_tip_link" pos="0.0394969463769 0.0 0.0382752038125">
+                <joint name="gripper_finger1_finger_tip_joint" type="hinge" axis="0 1 0" />
+                <geom type="mesh" mesh="distal_phalanx_Link" solimp="2.2 2.25 0.001 0.5 2"/>
+                <inertial pos="0.005 0 0.01" mass="0.0124305" fullinertia="2.84217e-06 3.03961e-06 1.11815e-06 -2.48048e-15 8.24539e-07 2.16427e-13" />
+                <site name="finger1_tip_site" />
+            </body>
+        </body>
+        <body name="gripper_finger2_knuckle_link" pos="0.016 0 0.10586" euler="0 0 0">
+            <joint name="gripper_finger2_joint" type="hinge" axis="0 1 0"/>
+            <geom type="mesh" mesh="crank_Link" />
+            <inertial pos="0.015 0 -0.011" mass=".011111" fullinertia="3.88172e-06 1.92174e-06 4.32374e-06 -2.29456e-13 8.33e-07 2.04435e-13" />
+            <body name="gripper_finger2_finger_link" pos="0.0292080077784 0.0 -0.022713262240">
+                <joint name="gripper_finger2_finger_joint" type="hinge" axis="0 1 0"/>
+                <geom type="mesh" mesh="rod_Link" />
+                <inertial pos="0.011 0 0.028" mass="0.0222871" fullinertia="8.72836e-06 7.26157e-06 3.3425e-06 7.0843e-15 -2.18833e-06 7.6579e-15" />
+            </body>
+        </body>
+        <body name="gripper_finger2_inner_knuckle_link" pos="0.016 0 0.10586" euler="0 0 0">
+            <joint name="gripper_finger2_inner_knuckle_joint" type="hinge" axis="0 1 0" />
+            <geom type="mesh" mesh="proximal_phalanx_Link" />
+            <inertial pos="0.02 0 0.02" mass="0.0318004" fullinertia="1.39848e-05 1.04943e-05 1.36183e-05 -9.54763e-15 -5.01422e-06 8.94585e-16" />
+            <body name="gripper_finger2_finger_tip_link" pos="0.0394969463769 0.0 0.0382752038125">
+                <joint name="gripper_finger2_finger_tip_joint" type="hinge" axis="0 1 0" />
+                <geom type="mesh" mesh="distal_phalanx_Link" solimp="2.2 2.25 0.001 0.5 2"/>
+                <inertial pos="0.005 0 0.01" mass="0.0124305" fullinertia="2.84217e-06 3.03961e-06 1.11815e-06 -2.48048e-15 8.24539e-07 2.16427e-13" />
+                <site name="finger2_tip_site" />
+            </body>
+        </body>
+    </body>
+</mujoco>

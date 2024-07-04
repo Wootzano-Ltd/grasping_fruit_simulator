@@ -1,0 +1,5 @@
+<mujoco>
+    <body name="sphere">
+        <geom type="sphere" size="0.032" rgba=".7 .0 .0 1" solimp="1.2 1.25 0.001 0.5 2"/>
+    </body>
+</mujoco>

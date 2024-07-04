@@ -1,0 +1,5 @@
+<mujoco>
+    <asset>
+        <mesh file="fruit/vine_tomatoes/meshes/sphere.stl" scale=".001 .001 .001"/>
+    </asset>
+</mujoco>
